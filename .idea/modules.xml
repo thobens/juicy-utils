@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/juicy-functions/juicy-functions.iml" filepath="$PROJECT_DIR$/juicy-functions/juicy-functions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juicy-utils.iml" filepath="$PROJECT_DIR$/juicy-utils.iml" />
+    </modules>
+  </component>
+</project>

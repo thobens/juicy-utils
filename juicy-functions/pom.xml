@@ -1,0 +1,42 @@
+<project>
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>juicy-functions</artifactId>
+   <packaging>jar</packaging>
+   <name>Juicy Utils Functions</name>
+
+   <parent>
+      <groupId>ch.nosedev.juicyutils</groupId>
+      <artifactId>juicy-utils</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <relativePath>../pom.xml</relativePath>
+   </parent>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+         </plugin>
+      </plugins>
+   </build>
+
+   <dependencies>
+      <dependency>
+         <groupId>org.projectlombok</groupId>
+         <artifactId>lombok</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.eclipse.xtend</groupId>
+         <artifactId>org.eclipse.xtend.lib</artifactId>
+         <version>2.10.0</version>
+      </dependency>
+      <dependency>
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-core</artifactId>
+      </dependency>
+   </dependencies>
+</project>
