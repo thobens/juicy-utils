@@ -9,7 +9,10 @@
     <properties>
         <javaVersion>1.8</javaVersion>
         <checkstyle.skip>false</checkstyle.skip>
+        <encoding>UTF-8</encoding>
         <project.root>.</project.root>
+
+        <sonar.jacoco.reportPath>${project.build.directory}/coverage-reports/jacoco-ut.exec</sonar.jacoco.reportPath>
     </properties>
 
     <modules>
