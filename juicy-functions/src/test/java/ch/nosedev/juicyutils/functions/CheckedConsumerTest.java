@@ -4,13 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static ch.nosedev.juicyutils.functions.Consumers.doTry;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.*;
 
-/**
- * Created by thobens on 28.10.16.
- */
 public class CheckedConsumerTest {
 
     private TestException expectedException;
@@ -22,7 +17,7 @@ public class CheckedConsumerTest {
 
     @Test
     public void tryCatchWithConsumerAcceptingNullThrowsNpe() {
-        doTry(this::doSomething).thenCatch(Throwable::printStackTrace).accept(null);
+        doTry(this::doSomething).thenCatch(Exception::printStackTrace).accept(null);
 
         // Behavior verification is accepted here since we do not depend on implementation details (expectedException is a test class)
         verify(expectedException).printStackTrace();
@@ -30,7 +25,7 @@ public class CheckedConsumerTest {
 
     @Test
     public void tryCatchWithConsumerAcceptingNonNullYieldsNoError() {
-        doTry(this::doSomething).thenCatch(Throwable::printStackTrace).accept("asdf");
+        doTry(this::doSomething).thenCatch(Exception::printStackTrace).accept("asdf");
 
         // Behavior verification is accepted here since we do not depend on implementation details (expectedException is a test class)
         verifyZeroInteractions(expectedException);

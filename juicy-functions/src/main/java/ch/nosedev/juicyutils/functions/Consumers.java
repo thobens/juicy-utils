@@ -2,10 +2,7 @@ package ch.nosedev.juicyutils.functions;
 
 import java.util.function.Consumer;
 
-/**
- * Created by thobens on 20.10.16.
- */
-public class Consumers<T, E extends Throwable> extends AbstractJuicyFunctions<Consumer<T>, Void, E> {
+public class Consumers<T, E extends Exception> extends AbstractJuicyFunctions<Consumer<T>, Void, E> {
 
     protected CheckedConsumer<T, E> consumer;
 
@@ -14,7 +11,7 @@ public class Consumers<T, E extends Throwable> extends AbstractJuicyFunctions<Co
         this.consumer = consumer;
     }
 
-    public static <T, E extends Throwable> Consumers<T, E> doTry(CheckedConsumer<T, E> consumer) {
+    public static <T, E extends Exception> Consumers<T, E> doTry(CheckedConsumer<T, E> consumer) {
         return new Consumers<>(consumer);
     }
 
@@ -23,7 +20,7 @@ public class Consumers<T, E extends Throwable> extends AbstractJuicyFunctions<Co
         return (arg) -> {
             try {
                 consumer.acceptChecked(arg);
-            } catch(Throwable e) {
+            } catch (Exception e) {
                 if(catcher != null) {
                     catcher.catchException((E) e);
                 }

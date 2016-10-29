@@ -8,9 +8,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.*;
 
-/**
- * Created by thobens on 28.10.16.
- */
 public class CheckedFunctionsTest {
 
     private TestException expectedException;
@@ -22,7 +19,7 @@ public class CheckedFunctionsTest {
 
     @Test
     public void tryCatchWithFunctionApplyingNullThrowsNpeAndDefaultsToNull() {
-        Integer actual = doTry(this::doSomething).thenCatch(Throwable::printStackTrace).apply(null);
+        Integer actual = doTry(this::doSomething).thenCatch(Exception::printStackTrace).apply(null);
 
         verify(expectedException).printStackTrace();
         assertNull(actual);
@@ -32,7 +29,7 @@ public class CheckedFunctionsTest {
     public void tryCatchWithFunctionApplyingNullWithDefaultThrowsNpeAndReturnsNonNull() {
         Integer expected = 1;
 
-        Integer actual = doTry(this::doSomething).returnDefault(expected).thenCatch(Throwable::printStackTrace).apply(null);
+        Integer actual = doTry(this::doSomething).returnDefault(expected).thenCatch(Exception::printStackTrace).apply(null);
 
         verify(expectedException).printStackTrace();
         assertEquals(expected, actual);
@@ -42,7 +39,7 @@ public class CheckedFunctionsTest {
     public void tryCatchWithFunctionApplyingNonNullYieldsNoError() {
         String expected = "asdf";
 
-        Integer actual = doTry(this::doSomething).thenCatch(Throwable::printStackTrace).apply(expected);
+        Integer actual = doTry(this::doSomething).thenCatch(Exception::printStackTrace).apply(expected);
 
         // Behavior verification is accepted here since we do not depend on implementation details (expectedException is a test class)
         verifyZeroInteractions(expectedException);

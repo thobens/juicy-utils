@@ -1,9 +1,6 @@
 package ch.nosedev.juicyutils.functions;
 
-/**
- * Created by thobens on 28.10.16.
- */
-public abstract class AbstractJuicyFunctions<F, R, E extends Throwable> implements JuicyFunctions<F, R, E> {
+public abstract class AbstractJuicyFunctions<F, R, E extends Exception> implements JuicyFunctions<F, R, E> {
 
     protected Default<?> def = Default.defaultNull();
 
