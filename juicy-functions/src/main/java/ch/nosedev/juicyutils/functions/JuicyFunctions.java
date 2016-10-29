@@ -1,7 +1,5 @@
 package ch.nosedev.juicyutils.functions;
 
-import lombok.NonNull;
-
 /**
  * Builder interface to create an anonymous method and handling an exception
  *
@@ -25,7 +23,7 @@ public interface JuicyFunctions<F, R, E extends Exception> {
      * @param catcher The anonymous function that catches the exception thrown by
      * @return An anonymous function wrapping a checked function
      */
-    F thenCatch(@NonNull Catcher<E> catcher);
+    F thenCatch(Catcher<E> catcher);
 
     /**
      * Default method to make shure that the thrown exception by the function proxy to
