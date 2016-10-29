@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         CheckedConsumerTest.class,
-        CheckedFunctionsTest.class
+        CheckedFunctionsTest.class,
+        CheckedPredicateTest.class
 })
 public class AllUnitTests {
 }
