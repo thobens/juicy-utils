@@ -14,6 +14,7 @@ public interface CheckedPredicate<T, E extends Exception> {
      *
      * @param arg the argument for the consumer
      * @throws E a checked exception
+     * @return true if the test succeeds, false otherwise
      */
     boolean testChecked(T arg) throws E;
 }
