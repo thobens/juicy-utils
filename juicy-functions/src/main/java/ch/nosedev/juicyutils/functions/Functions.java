@@ -2,6 +2,12 @@ package ch.nosedev.juicyutils.functions;
 
 import java.util.function.Function;
 
+/**
+ * {@link JuicyFunctions} implementation for the {@link Function} function
+ *
+ * @param <T> The type of the parameter accepted by this {@link #consumer}s implementation of {@link Function#apply(Object)}
+ * @param <E> The Exception caught by {@link #thenCatch(Catcher)}
+ */
 public class Functions<T, R, E extends Exception> extends AbstractJuicyFunctions<Function<T, R>, R, E> {
 
     protected CheckedFunction<T, R, E> consumer;
@@ -11,14 +17,22 @@ public class Functions<T, R, E extends Exception> extends AbstractJuicyFunctions
         this.consumer = func;
     }
 
-    public static <T, R, E extends Exception> Functions<T, R, E> doTry(CheckedFunction<T, R, E> consumer) {
-        return new Functions<>(consumer);
+    /**
+     * Builder method to initialize builder
+     *
+     * @param func The {@link CheckedConsumer} object that possibly throws <code>E</code>
+     * @param <T>  The type of the parameter accepted by the given function
+     * @param <E>  The Exception thrown by the consumer}
+     * @return A reference to this object
+     */
+    public static <T, R, E extends Exception> Functions<T, R, E> doTry(CheckedFunction<T, R, E> func) {
+        return new Functions<>(func);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public Function<T, R> thenCatch(Catcher<E> catcher) {
-        return (arg) -> {
+        return arg -> {
             try {
                 return consumer.applyChecked(arg);
             } catch (Exception e) {
